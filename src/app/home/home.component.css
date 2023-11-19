@@ -1,0 +1,29 @@
+* {
+  font-family: "Poppins", sans-serif;
+  color: white;
+}
+a {
+  color: white;
+}
+a:hover {
+  color: rgb(0, 21, 255);
+}
+.dropdown-toggle {
+  color: white !important;
+}
+.dropdown-toggle:hover {
+  color: rgb(0, 21, 255) !important;
+}
+.dropdown-item:hover {
+  color: rgb(0, 21, 255) !important;
+}
+footer {
+  color: white;
+}
+
+.borde{
+  border-radius: 20px;
+}
+img{
+  border-radius: 20px;
+}

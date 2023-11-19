@@ -1,0 +1,18 @@
+* {
+  color: white;
+}
+
+a:hover {
+  color: rgb(0, 21, 255);
+}
+
+.dropdown-toggle {
+  color: white !important;
+}
+.dropdown-toggle:hover {
+  color: rgb(0, 21, 255) !important;
+}
+
+.dropdown-item:hover {
+  color: rgb(0, 21, 255) !important;
+}
