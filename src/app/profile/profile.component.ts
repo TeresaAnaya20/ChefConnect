@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { User_Service } from '../user-service.service';
 import {
-  FormGroup,
+  UntypedFormGroup,
   FormControl,
-  FormBuilder,
+  UntypedFormBuilder,
   Validators,
   NgForm,
 } from '@angular/forms';
@@ -20,7 +20,7 @@ export class ProfileComponent {
     nombreArchivo: '',
     base64textString: '',
   };
-  angForm: FormGroup;
+  angForm: UntypedFormGroup;
   users: any;
 
   usr = {
@@ -36,7 +36,7 @@ export class ProfileComponent {
   constructor(
     private dataService: ApiService,
     private userService: User_Service,
-    private fb: FormBuilder
+    private fb: UntypedFormBuilder
   ) {
     this.angForm = this.fb.group({
       nombre: '',
@@ -105,7 +105,7 @@ export class ProfileComponent {
     });
   }
 
-  postdata(angForm1: FormGroup) {
+  postdata(angForm1: UntypedFormGroup) {
     this.dataService
       .recetaregistration(
         angForm1.value.nombre,

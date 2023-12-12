@@ -20,7 +20,7 @@
 //   // }
 // }
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators, NgForm } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
@@ -31,9 +31,9 @@ import { ApiService } from '../api.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  angForm: FormGroup;
+  angForm: UntypedFormGroup;
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private dataService: ApiService,
     private router: Router
   ) {
@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required],
     });
   }
-  postdata(angForm1: FormGroup) {
+  postdata(angForm1: UntypedFormGroup) {
     this.dataService
       .userlogin(angForm1.value.email, angForm1.value.password)
       .pipe(first())

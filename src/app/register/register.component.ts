@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  FormGroup,
+  UntypedFormGroup,
   FormControl,
-  FormBuilder,
+  UntypedFormBuilder,
   Validators,
   NgForm,
 } from '@angular/forms';
@@ -16,9 +16,9 @@ import { ApiService } from '../api.service';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-  angForm: FormGroup;
+  angForm: UntypedFormGroup;
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private dataService: ApiService,
     private router: Router
   ) {
@@ -41,7 +41,7 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  postdata(angForm1: FormGroup) {
+  postdata(angForm1: UntypedFormGroup) {
     this.dataService
       .userregistration(
         angForm1.value.name,
