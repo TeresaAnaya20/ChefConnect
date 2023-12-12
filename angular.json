@@ -108,5 +108,8 @@
       }
     }
   },
-  "defaultProject": "ChefConnect"
+  "defaultProject": "ChefConnect",
+  "cli": {
+    "analytics": false
+  }
 }
