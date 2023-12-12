@@ -46,7 +46,12 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.angForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+    });
+  }
   postdata(angForm1: FormGroup) {
     this.dataService
       .userlogin(angForm1.value.email, angForm1.value.password)
@@ -55,7 +60,7 @@ export class LoginComponent implements OnInit {
         (data) => {
           const redirect = this.dataService.redirectUrl
             ? this.dataService.redirectUrl
-            : '/dashboard' + this.email;
+            : '/home' + this.email;
           // : '/dashboard';
           this.router.navigate([redirect]);
         },

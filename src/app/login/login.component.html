@@ -24,15 +24,19 @@
 </div> -->
 
 <body style="margin-top:0px;padding:1px;">
-  <div class="login-container" style="height:80vh;background-color: rgba(0, 0, 0, 0.604); padding: 10px;">
+  <div class="login-container" style="height:80vh;background-color: #475891; padding: 10px;">
     <div class="login-info-container">
-      <h1 class="title">Log in with</h1>
+      <h1 class="title">Log in</h1>
       <form [formGroup]="angForm" (ngSubmit)="postdata(angForm)" autocomplete="off" class="inputs-container">
         <input class="input" type="email" name="email" formControlName="email" autocomplete="off"
-          class="form-control input-sm" placeholder="Email">
+          class="form-control input-sm" placeholder="Email" ngModel email>
+        <div *ngIf="angForm.get('email')?.hasError('email') && angForm.get('email')?.touched" class="error-message"
+          style="color: red; font-size: 14px;">
+          Por favor, introduce un formato de correo electrónico válido.
+        </div>
         <input class="input" type="password" name="Password" formControlName="password" autocomplete="off"
           class="form-control input-sm" placeholder="Password">
-        <button type="submit" class="btn">Login</button>
+        <button type="submit" class="btn" [disabled]="angForm.invalid">Login</button>
         <p>Don't have an account? <span class="span"><a routerLink="../registration">Sign Up</a></span></p>
       </form>
     </div>

@@ -45,8 +45,9 @@ import { User_Service } from './user-service.service';
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
+    ReactiveFormsModule,
   ],
-  providers: [User_Service],//si falla quita esto de user_service
+  providers: [User_Service], //si falla quita esto de user_service
   bootstrap: [AppComponent],
 })
 export class AppModule {}

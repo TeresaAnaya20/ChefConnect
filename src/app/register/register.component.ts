@@ -33,7 +33,13 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.angForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+      name: '',
+    });
+  }
 
   postdata(angForm1: FormGroup) {
     this.dataService
@@ -45,7 +51,8 @@ export class RegisterComponent implements OnInit {
       .pipe(first())
       .subscribe(
         (data) => {
-          this.router.navigate(['login']);
+          // this.router.navigate(['login']);
+          this.router.navigate(['/home']);
         },
 
         (error) => {}

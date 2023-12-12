@@ -48,6 +48,11 @@
   <div class="container-fluid"
     style="display:flex; justify-content: center; align-items: center;padding: 0px; background-color: rgba(0, 0, 0, 0.583); height: 90vh; color: white;">
     <h1>ChefConnect</h1>
+    <h2>
+      <div *ngIf="loggedInName">
+        <p>Bienvenido, {{ loggedInName }}</p>
+      </div>
+    </h2>
   </div>
 </div>
 <!-- Footer -->

@@ -1,18 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
 
 :root {
-  --login-bg: #000000;
-  --title-bg: #9089cc;
-  --button-bg: #4500f4;
-  --light-pink: #000603;
-  --image-bg: #eadbff;
+  --login-bg: #f3f6ff;
+  --title-bg: #1700ea;
+  --button-bg: #000000;
+  --light-pink: #000000;
+  --image-bg: #411085;
+}
+
+a {
+  color: #000000;
 }
 
 body {
   color: white;
   height: 100vh;
   font-family: "Poppins", sans-serif;
-  background-image: linear-gradient(to top, #000000 0%, #5000fc 100%);
+  background-image: linear-gradient(to top, #192643 0%, #8091e9 100%);
 }
 
 .login-container {

@@ -41,7 +41,7 @@
 
 <body class="container-fluid bg-black" style="height: fit-content;">
   <div class="container" *ngFor="let rct of recetas">
-    <div class="borde" style="background-color: rgba(255, 255, 255, 0.363); padding: 10px;">
+    <div class="borde" style="padding: 10px;">
       <div class="row justify-content-md-center">
         <div class="col-md-auto">
           <h1>{{rct.nombre}}</h1>
@@ -50,13 +50,14 @@
       <div class="row">
         <div class="col-sm-8"><img src="../../assets/images/{{rct.imagen}}" alt="" width="100%" height="auto"
             class="img-fluid"></div>
-        <div class="col-sm-4">
+        <div class="col-sm-4 text-start">
           <p>{{rct.descripcion}}</p>
         </div>
       </div>
+      <br>
       <div class="row">
-        <div class="col-sm">Like</div>
-        <div class="col-sm">Dislike</div>
+        <div class="col-sm text-end"><i class="fa-solid fa-thumbs-up fa-2xl"> 2</i></div>
+        <div class="col-sm text-start"><i class="fa-solid fa-thumbs-down fa-2xl"> 0</i></div>
       </div>
     </div>
     <br>

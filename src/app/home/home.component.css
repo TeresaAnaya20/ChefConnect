@@ -1,6 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
 * {
   font-family: "Poppins", sans-serif;
-  color: white;
 }
 a {
   color: white;
@@ -18,12 +18,18 @@ a:hover {
   color: rgb(0, 21, 255) !important;
 }
 footer {
-  color: white;
+  color: white!important;
 }
 
-.borde{
-  border-radius: 20px;
+.borde {
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255)!important;
+  color: black !important;
 }
-img{
-  border-radius: 20px;
+img {
+  border-radius: 10px;
+}
+.navbar-toggler-icon{
+  background-color: white;
+  border-radius: 2px;
 }

@@ -85,7 +85,7 @@
   </nav>
   <br>
   <div class="container">
-    <div class="card" style="padding: 20px;">
+    <div class="card" style="padding: 20px;background-color: rgb(0, 0, 0);color: white;">
       <h1 class="title text-center">¡Registra tu receta!</h1><br>
       <form [formGroup]="angForm" (ngSubmit)="postdata(angForm)" (ngSubmit)="upload()" autocomplete="off"
         class="inputs-container">
@@ -107,7 +107,7 @@
         <!-- <button> SUBIR ARCHIVO </button> -->
         <!-- </form> -->
         <input class="input" type="number" name="user" formControlName="user" autocomplete="off"
-          class="form-control input-sm" placeholder="Usuario" readonly>
+          class="form-control input-sm" placeholder="Usuario">
         <br>
         <input type="file" accept="image/*" (change)="seleccionarArchivo($event)">
         <br><br>

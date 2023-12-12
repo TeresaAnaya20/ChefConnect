@@ -13,11 +13,15 @@ import { HttpClient } from '@angular/common/http';
 import { Users } from './users';
 import { Recetas } from './recetas';
 import { environment } from '../environments/environment';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
+  private loggedInNameSubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  // getLoggedInName = this.loggedInNameSubject.asObservable();
+  // loggedInName: string = '';
   redirectUrl: string = '';
   // baseUrl: string = 'http://localhost/angular_admin/php';
   baseUrl: string = 'http://localhost/angular/chefConnect/ChefConnect/php/';
@@ -25,6 +29,7 @@ export class ApiService {
   @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
   constructor(private httpClient: HttpClient) {}
   public userlogin(username: string, password: string) {
+    this.loggedInNameSubject.next(username);
     alert(username);
     return this.httpClient
       .post<any>(this.baseUrl + '/login.php', { username, password })
@@ -86,4 +91,11 @@ export class ApiService {
         })
       );
   }
+  // onLoggedIn() {
+  //   this.getLoggedInName.subscribe((isLoggedIn: boolean) => {
+  //     if (isLoggedIn) {
+  //       this.loggedInName = this.getToken();
+  //     }
+  //   });
+  // }
 }
