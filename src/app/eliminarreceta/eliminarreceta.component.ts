@@ -1,26 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { User_Service } from '../user-service.service';
 import { ApiService } from '../api.service';
-import { first } from 'rxjs/operators';
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  selector: 'app-eliminarreceta',
+  // standalone: true,
+  // imports: [],
+  templateUrl: './eliminarreceta.component.html',
+  styleUrl: './eliminarreceta.component.css',
 })
-export class HomeComponent implements OnInit {
+export class EliminarrecetaComponent implements OnInit {
   recetas: any;
   loginbtn: boolean;
   logoutbtn: boolean;
 
   rct = {
-    id: 0,
+    indice: 0,
     nombre: '',
     tipo: '',
     descripcion: '',
     imagen: '',
     user: 0,
-    like:0,
-    unlike:0
+    like: 0,
+    unlike: 0,
   };
 
   constructor(
@@ -58,5 +59,12 @@ export class HomeComponent implements OnInit {
 
   hayRegistros() {
     return true;
+  }
+
+  delete(indice: any) {
+    this.userService.deleteRecetas(indice).subscribe(
+      (result: any) => (this.recetas = result),
+      (error: any) => console.error('Error:', error)
+    );
   }
 }

@@ -22,6 +22,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { ProfileComponent } from './profile/profile.component';
 import { User_Service } from './user-service.service';
+import { EliminarrecetaComponent } from './eliminarreceta/eliminarreceta.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { User_Service } from './user-service.service';
     RegisterComponent,
     DashboardComponent,
     ProfileComponent,
+    EliminarrecetaComponent,
   ],
   imports: [
     CommonModule,

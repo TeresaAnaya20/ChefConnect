@@ -9,6 +9,7 @@
 // }
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Recetas } from './recetas';
 // import { Users } from './users';
 // import { environment } from '../environments/environment';
 @Injectable({
@@ -41,11 +42,11 @@ export class User_Service {
   //   return this.http.post(`${this.baseUrl}/post.php`, mascota);
   // }
 
-  // deleteMascota(mascota: Mascota) {
-  //   return this.http.delete(
-  //     `${this.baseUrl}/delete.php?idMascota=${mascota.id}`
-  //   );
-  // }
+  deleteRecetas(indice: any) {
+    return this.http.delete(
+      `${this.baseUrl}/deleteReceta.php?indice=${indice}`
+    );
+  }
 
   // updateMascota(mascota: Mascota) {
   //   return this.http.put(`${this.baseUrl}/update.php`, mascota);

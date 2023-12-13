@@ -24,6 +24,7 @@ import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthguardGuard } from './authguard.guard';
 import { ProfileComponent } from './profile/profile.component';
+import { EliminarrecetaComponent } from './eliminarreceta/eliminarreceta.component';
 
 const routes: Routes = [
   // { path: '', component: LoginComponent },
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path: 'registration', component: RegisterComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthguardGuard]  },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthguardGuard]},
+  { path: 'eliminar', component: EliminarrecetaComponent, canActivate: [AuthguardGuard]},
 ];
 
 @NgModule({

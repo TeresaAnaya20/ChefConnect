@@ -1,3 +1,4 @@
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
 <nav class="navbar navbar-expand-lg navbar-light bg-black">
   <div class="container-fluid">
     <a href="#" class="navbar-brand">
@@ -39,28 +40,31 @@
   </div>
 </nav>
 
-<body class="container-fluid bg-black" style="height: fit-content;">
-  <div class="container" *ngFor="let rct of recetas">
-    <div class="borde" style="padding: 10px;">
-      <div class="row justify-content-md-center">
-        <div class="col-md-auto">
-          <h1>{{rct.nombre}}</h1>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-8"><img src="../../assets/images/{{rct.imagen}}" alt="" width="100%" height="auto"
-            class="img-fluid"></div>
-        <div class="col-sm-4 text-start">
-          <p>{{rct.descripcion}}</p>
-        </div>
-      </div>
-      <br>
-      <div class="row">
-        <div class="col-sm text-end"><i class="fa-solid fa-thumbs-up fa-2xl">{{rct.like}}</i></div>
-        <div class="col-sm text-start"><i class="fa-solid fa-thumbs-down fa-2xl">{{rct.unlike}}</i></div>
-      </div>
-    </div>
-    <br>
+<body class="container-fluid bg-black">
+  <div class="datagrid d-flex align-items-center justify-content-center" ng-controller="TuControlador">
+    <table>
+      <thead>
+        <tr>
+          <!-- <th>ID</th> -->
+          <th>Name</th>
+          <th>Descripcion</th>
+          <th>Tipo</th>
+          <th>Usuario</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let rct of recetas" [attr.id]="rct.indice">
+          <!--  each row id == id -->
+          <!-- <td>{{ rct.indice }}</td> -->
+          <td>{{ rct.nombre }}</td>
+          <td>{{ rct.descripcion }}</td>
+          <td>{{ rct.tipo }}</td>
+          <td>{{ rct.user }}</td>
+          <button (click)="delete(rct.indice)" class="btn btn-danger btn-xs">Delete</button>
+        </tr>
+      </tbody>
+    </table>
   </div>
   <!-- Footer -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
