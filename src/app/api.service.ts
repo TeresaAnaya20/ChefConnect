@@ -75,8 +75,10 @@ export class ApiService {
     tipo: string,
     descripcion: string,
     imagen: string,
-    user: number
+    user: number,
+    email: string
   ) {
+    console.log('Datos que se están enviando:', { nombre, tipo, descripcion, imagen, user, email });
     return this.httpClient
       .post<any>(this.baseUrl + '/registerReceta.php', {
         nombre,
@@ -84,6 +86,7 @@ export class ApiService {
         descripcion,
         imagen,
         user,
+        email,
       })
       .pipe(
         map((Recetas) => {

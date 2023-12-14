@@ -20,12 +20,17 @@ export class User_Service {
 
   constructor(private http: HttpClient) {}
 
-  getUsers() {
-    return this.http.get(`${this.baseUrl}/users.php`);
+  getUsers(email: any) {
+    // return this.http.get(`${this.baseUrl}/users.php`);
+    return this.http.get(`${this.baseUrl}/userEmail.php?email=${email}`);
   }
 
   getRecetas() {
     return this.http.get(`${this.baseUrl}/recetas.php`);
+  }
+
+  getRecetasById(email:any) {
+    return this.http.get(`${this.baseUrl}/recetasById.php?email=${email}`);
   }
 
   uploadFile(archivo: any) {

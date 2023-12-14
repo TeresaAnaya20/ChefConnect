@@ -9,12 +9,16 @@ import {
   NgForm,
 } from '@angular/forms';
 import { first } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
+import { EmailServiceService } from '../email-service.service';
+// import { NgModule } from '@angular/core';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css'],
+  // providers: [EmailServiceService],
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit {
   archivo = {
     nombre: '',
     nombreArchivo: '',
@@ -22,7 +26,8 @@ export class ProfileComponent {
   };
   angForm: UntypedFormGroup;
   users: any;
-
+  email: any;
+  emailValue: any;
   usr = {
     id: 0,
     name: '',
@@ -36,7 +41,9 @@ export class ProfileComponent {
   constructor(
     private dataService: ApiService,
     private userService: User_Service,
-    private fb: UntypedFormBuilder
+    private fb: UntypedFormBuilder,
+    private route: ActivatedRoute,
+    private EmailServiceService: EmailServiceService
   ) {
     this.angForm = this.fb.group({
       nombre: '',
@@ -67,11 +74,19 @@ export class ProfileComponent {
 
   ngOnInit(): void {
     this.recuperarTodos();
+    let email = this.route.snapshot?.paramMap.get('email') || null;
+    console.log('Hola ' + email);
+    this.emailValue = email;
+    localStorage.setItem('email', this.emailValue); //sefbwekfbwekjfjb
+    // console.log('Holaa ' + this.emailValue);
+    // this.EmailServiceService.setEmailValue(this.emailValue); // Almacena el valor en el servicio
+    // console.log('getEmailValue ' + this.EmailServiceService.getEmailValue());
   }
 
   recuperarTodos() {
+    let email = this.route.snapshot?.paramMap.get('email') || null;
     this.userService
-      .getUsers()
+      .getUsers(this.route.snapshot?.paramMap.get('email'))
       .subscribe((result: any) => (this.users = result));
   }
 
@@ -105,14 +120,15 @@ export class ProfileComponent {
     });
   }
 
-  postdata(angForm1: UntypedFormGroup) {
+  postdata(angForm1: UntypedFormGroup, emailValue: string) {
     this.dataService
       .recetaregistration(
         angForm1.value.nombre,
         angForm1.value.tipo,
         angForm1.value.descripcion,
         this.archivo.nombreArchivo,
-        angForm1.value.user
+        angForm1.value.user,
+        this.emailValue
       )
       .pipe(first())
       .subscribe(

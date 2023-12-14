@@ -23,7 +23,7 @@ import { MatListModule } from '@angular/material/list';
 import { ProfileComponent } from './profile/profile.component';
 import { User_Service } from './user-service.service';
 import { EliminarrecetaComponent } from './eliminarreceta/eliminarreceta.component';
-
+import { EmailServiceService } from './email-service.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +49,7 @@ import { EliminarrecetaComponent } from './eliminarreceta/eliminarreceta.compone
     MatListModule,
     ReactiveFormsModule,
   ],
-  providers: [User_Service], //si falla quita esto de user_service
+  providers: [User_Service, EmailServiceService], //si falla quita esto de user_service
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -2,16 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { User_Service } from '../user-service.service';
 import { ApiService } from '../api.service';
 import { first } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
+import { EmailServiceService } from '../email-service.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
+  // providers: [EmailServiceService],
 })
 export class HomeComponent implements OnInit {
   recetas: any;
   loginbtn: boolean;
   logoutbtn: boolean;
-
+  parametro: any;
   rct = {
     id: 0,
     nombre: '',
@@ -19,13 +22,15 @@ export class HomeComponent implements OnInit {
     descripcion: '',
     imagen: '',
     user: 0,
-    like:0,
-    unlike:0
+    like: 0,
+    unlike: 0,
   };
 
   constructor(
     private userService: User_Service,
-    private dataService: ApiService
+    private dataService: ApiService,
+    private route: ActivatedRoute,
+    private emailServiceService: EmailServiceService
   ) {
     dataService.getLoggedInName.subscribe((name) => this.changeName(name));
     if (this.dataService.isLoggedIn()) {
@@ -47,7 +52,23 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // this.recuperarTodos();
+    // let email = this.emailServiceService.getEmailValue();
+    // if (email) {
+    //   console.log('Hola ' + email);
+    // } else {
+    //   console.log('El valor del correo es nulo o indefinido.');
+    // }
     this.recuperarTodos();
+    let email = this.emailServiceService.getEmailValue();
+    if (email) {
+      console.log('Hola ' + email);
+    } else {
+      console.log('El valor del correo es nulo o indefinido.');
+    }
+    // this.dato = localStorage.getItem('email');
+    this.parametro = localStorage.getItem('email');
+    console.log('afdajernfalkjwenglakwjerng ' + localStorage.getItem('email'));
   }
 
   recuperarTodos() {

@@ -8,7 +8,7 @@
 // export class AppComponent {
 //   title = 'ChefConnect';
 // }
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ApiService } from './api.service';
 import { User_Service } from './user-service.service';
 @Component({
@@ -16,7 +16,14 @@ import { User_Service } from './user-service.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  parametro: any;
+
+  ngOnInit() {
+    // let email = this.route.snapshot?.paramMap.get('email') || null;
+    this.parametro = localStorage.getItem('email');
+    console.log('afdajernfalkjwenglakwjerng ' + localStorage.getItem('email'));
+  }
   archivo = {
     nombre: '',
     nombreArchivo: '',

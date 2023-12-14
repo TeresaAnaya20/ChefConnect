@@ -24,7 +24,7 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="profile" style="color: black;">Subir receta</a></li>
-              <li><a class="dropdown-item" href="#" style="color: black;">Another action</a></li>
+              <li><a class="dropdown-item" href="eliminar" style="color: black;">Eliminar receta</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
@@ -40,17 +40,37 @@
     </div>
   </nav>
   <br>
-  <div class="container">
+  <div class="container" style="height: 100vh; margin-bottom: 80px;">
+    <!-- aqui style style="height: 100vh; margin-bottom: 80px;" -->
+    <!-- Tabla de usuarios -->
+    <div class="card" style="padding: 20px;background-color: rgb(0, 0, 0);color: white;">
+      <div *ngIf="hayRegistros(); else sinUsers">
+        <div *ngFor="let usr of users">
+          <h1 class="title text-center">{{usr.name}}</h1><br>
+          <div class="circle-container">
+            <img src="../../assets/images/user.png" alt="" class="center-image">
+          </div>
+          <p>Email: {{usr.email}}</p>
+        </div>
+      </div>
+      <ng-template #sinUsers>
+        <p>No hay usuarios.</p>
+      </ng-template>
+    </div>
+    <br><br>
     <div class="card" style="padding: 20px;background-color: rgb(0, 0, 0);color: white;">
       <h1 class="title text-center">¡Registra tu receta!</h1><br>
-      <form [formGroup]="angForm" (ngSubmit)="postdata(angForm)" (ngSubmit)="upload()" autocomplete="off"
+      <form [formGroup]="angForm" (ngSubmit)="postdata(angForm, email)" (ngSubmit)="upload()" autocomplete="off"
         class="inputs-container">
+        <h5>Nombre:</h5>
         <input class="input" type="text" name="nombre" formControlName="nombre" autocomplete="off"
           class="form-control input-sm" placeholder="Nombre de la receta">
         <br>
+        <h5>Tipo:</h5>
         <input class="input" type="text" name="tipo" formControlName="tipo" autocomplete="off"
           class="form-control input-sm" placeholder="Tipo">
         <br>
+        <h5>Descripción:</h5>
         <textarea class="input" type="text" name="descripcion" formControlName="descripcion" autocomplete="off"
           class="form-control input-sm" placeholder="Descripción"></textarea>
         <!-- <form (ngSubmit)="upload()"> -->
@@ -62,38 +82,28 @@
         <br>
         <!-- <button> SUBIR ARCHIVO </button> -->
         <!-- </form> -->
-        <input class="input" type="number" name="user" formControlName="user" autocomplete="off"
-          class="form-control input-sm" placeholder="Usuario">
+        <!-- <input class="input" type="number" name="user" formControlName="user" autocomplete="off"
+          class="form-control input-sm" placeholder="Usuario"> -->
+        <h5>Usuario:</h5>
+        <div *ngFor="let usr of users">
+          <input class="input" type="text" name="user" formControlName="user" autocomplete="off"
+            class="form-control input-sm" placeholder="{{usr.email}}" value="{{usr.email}}" readonly>
+        </div>
         <br>
+        <h5>Archivo:</h5>
         <input type="file" accept="image/*" (change)="seleccionarArchivo($event)">
         <br><br>
         <button type="submit" class="btn btn-primary">Subir receta</button>
       </form>
     </div>
   </div>
-
-  <!-- Tabla de usuarios -->
-  <!-- <div class="container-xl mt-4 bg-dark">
-    <table *ngIf="hayRegistros(); else sinUsers" class="table table-dark text-center text-gray">
-      <tr>
-        <td>Nombre</td>
-        <td>Mail</td>
-      </tr>
-      <tr *ngFor="let usr of users">
-        <td>{{usr.name}}</td>
-        <td>{{usr.email}}</td>
-      </tr>
-    </table>
-    <ng-template #sinUsers>
-      <p>No hay usuarios.</p>
-    </ng-template>
-  </div> -->
 </body>
 <!-- Footer -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
   integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
   crossorigin="anonymous" referrerpolicy="no-referrer" />
 <footer class="text-center text-lg-start bg-black">
+  <!-- <footer class="text-center text-lg-start bg-black fixed-bottom" style="height: 60px; z-index: 1;"> -->
   <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
     <div class="me-5 d-lg-block">
       <span>Redes Sociales:</span>

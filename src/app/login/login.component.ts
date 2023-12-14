@@ -20,11 +20,16 @@
 //   // }
 // }
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormGroup, UntypedFormBuilder, Validators, NgForm } from '@angular/forms';
+import {
+  UntypedFormGroup,
+  UntypedFormBuilder,
+  Validators,
+  NgForm,
+} from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
-
+import { EmailServiceService } from '../email-service.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -35,7 +40,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: UntypedFormBuilder,
     private dataService: ApiService,
-    private router: Router
+    private router: Router,
+    private EmailServiceService: EmailServiceService
   ) {
     this.angForm = this.fb.group({
       email: [
@@ -58,11 +64,16 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         (data) => {
-          const redirect = this.dataService.redirectUrl
-            ? this.dataService.redirectUrl
-            : '/home' + this.email;
-          // : '/dashboard';
-          this.router.navigate([redirect]);
+          // const redirect = this.dataService.redirectUrl
+          //   ? this.dataService.redirectUrl
+          //   : '/home'
+          //   + this.email;
+          // // : '/dashboard';
+          // this.router.navigate([redirect]);
+          // this.router.navigate(['/home'+this.email]);
+          // this.router.navigate(['/home', angForm1.value.email]);
+          this.EmailServiceService.setEmailValue(angForm1.value.email); // Almacena el valor en el servicio
+          this.router.navigate(['/profile', angForm1.value.email]);
         },
         (error) => {
           alert('User name or password is incorrect');

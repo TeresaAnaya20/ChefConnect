@@ -30,10 +30,14 @@ const routes: Routes = [
   // { path: '', component: LoginComponent },
   { path: '', component: DashboardComponent, canActivate: [AuthguardGuard] },
   { path: 'login', component: LoginComponent },
+  // { path: 'login', component: LoginComponent,canActivate: [AuthguardGuard] },
   { path: 'home', component: HomeComponent,  canActivate: [AuthguardGuard]},
+  // { path: 'home/:email', component: HomeComponent,  canActivate: [AuthguardGuard]},
   { path: 'registration', component: RegisterComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthguardGuard]  },
-  { path: 'profile', component: ProfileComponent, canActivate: [AuthguardGuard]},
+  // { path: 'dashboard/:email', component: DashboardComponent, canActivate: [AuthguardGuard]  },
+  // { path: 'profile', component: ProfileComponent, canActivate: [AuthguardGuard]},
+  { path: 'profile/:email', component: ProfileComponent, canActivate: [AuthguardGuard]},
   { path: 'eliminar', component: EliminarrecetaComponent, canActivate: [AuthguardGuard]},
 ];
 
