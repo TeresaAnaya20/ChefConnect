@@ -72,6 +72,8 @@ export class EliminarrecetaComponent implements OnInit {
     } else {
       console.log('El valor del correo es nulo o indefinido.');
     }
+    this.parametro = localStorage.getItem('email');
+    console.log('afdajernfalkjwenglakwjerng ' + localStorage.getItem('email'));
   }
 
   hayRegistros() {

@@ -1,3 +1,4 @@
+<link rel="icon" type="image/x-icon" href="assets/images/favicon.png">
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
 <nav class="navbar navbar-expand-lg navbar-light bg-black">
   <div class="container-fluid">
@@ -32,10 +33,10 @@
           </ul>
         </li>
       </ul>
-      <form class="d-flex">
+      <!-- <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      </form> -->
     </div>
   </div>
 </nav>
@@ -61,7 +62,7 @@
           <td>{{ rct.descripcion }}</td>
           <td>{{ rct.tipo }}</td>
           <td>{{ rct.user }}</td>
-          <button (click)="delete(rct.indice)" class="btn btn-danger btn-xs">Delete</button>
+          <td><button (click)="delete(rct.indice)" class="btn btn-danger btn-xs">Delete</button></td>
         </tr>
       </tbody>
     </table>
@@ -70,7 +71,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <footer class="text-center text-lg-start bg-black">
+  <footer class="text-center text-lg-start bg-black" style="padding-top: 20vh; width: 100%;">
     <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
       <div class="me-5 d-lg-block">
         <span>Redes Sociales:</span>

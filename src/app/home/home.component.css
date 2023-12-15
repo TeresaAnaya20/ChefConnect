@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
 * {
   font-family: "Poppins", sans-serif;
 }
@@ -18,18 +18,18 @@ a:hover {
   color: rgb(0, 21, 255) !important;
 }
 footer {
-  color: white!important;
+  color: white !important;
 }
 
 .borde {
   border-radius: 10px;
-  background-color: rgb(255, 255, 255)!important;
+  background-color: rgb(255, 255, 255) !important;
   color: black !important;
 }
 img {
   border-radius: 10px;
 }
-.navbar-toggler-icon{
+.navbar-toggler-icon {
   background-color: white;
   border-radius: 2px;
 }

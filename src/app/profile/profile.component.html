@@ -1,3 +1,4 @@
+<link rel="icon" type="image/x-icon" href="assets/images/favicon.png">
 <body>
   <nav class="navbar navbar-expand-lg navbar-light bg-black">
     <div class="container-fluid">
@@ -23,7 +24,7 @@
               Profile
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="profile" style="color: black;">Subir receta</a></li>
+              <li><a class="dropdown-item" href="profile/{{emailValue}}" style="color: black;">Subir receta</a></li>
               <li><a class="dropdown-item" href="eliminar" style="color: black;">Eliminar receta</a></li>
               <li>
                 <hr class="dropdown-divider">
@@ -32,18 +33,19 @@
             </ul>
           </li>
         </ul>
-        <form class="d-flex">
+        <!-- <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+        </form> -->
       </div>
     </div>
   </nav>
   <br>
-  <div class="container" style="height: 100vh; margin-bottom: 80px;">
+  <!-- <div class="container" style="height: 100vh; margin-bottom: 80px;"> -->
+  <div class="container">
     <!-- aqui style style="height: 100vh; margin-bottom: 80px;" -->
     <!-- Tabla de usuarios -->
-    <div class="card" style="padding: 20px;background-color: rgb(0, 0, 0);color: white;">
+    <!-- <div class="card" style="padding: 20px;background-color: rgb(0, 0, 0);color: white;">
       <div *ngIf="hayRegistros(); else sinUsers">
         <div *ngFor="let usr of users">
           <h1 class="title text-center">{{usr.name}}</h1><br>
@@ -57,22 +59,26 @@
         <p>No hay usuarios.</p>
       </ng-template>
     </div>
-    <br><br>
+    <br><br> -->
     <div class="card" style="padding: 20px;background-color: rgb(0, 0, 0);color: white;">
       <h1 class="title text-center">¡Registra tu receta!</h1><br>
       <form [formGroup]="angForm" (ngSubmit)="postdata(angForm, email)" (ngSubmit)="upload()" autocomplete="off"
         class="inputs-container">
         <h5>Nombre:</h5>
         <input class="input" type="text" name="nombre" formControlName="nombre" autocomplete="off"
-          class="form-control input-sm" placeholder="Nombre de la receta">
+          class="form-control input-sm" placeholder="Nombre de la receta" required>
         <br>
         <h5>Tipo:</h5>
-        <input class="input" type="text" name="tipo" formControlName="tipo" autocomplete="off"
-          class="form-control input-sm" placeholder="Tipo">
+        <select class="form-control input-sm" name="tipo" formControlName="tipo" required>
+          <option value="" disabled selected>Selecciona un tipo</option>
+          <option value="Comida">Comida</option>
+          <option value="Postre">Postre</option>
+        </select>
+
         <br>
         <h5>Descripción:</h5>
         <textarea class="input" type="text" name="descripcion" formControlName="descripcion" autocomplete="off"
-          class="form-control input-sm" placeholder="Descripción"></textarea>
+          class="form-control input-sm" placeholder="Descripción" required></textarea>
         <!-- <form (ngSubmit)="upload()"> -->
         <!-- <label>Nombre archivo:</label> -->
         <input type="text" [(ngModel)]="archivo.nombre" name="file" hidden>
@@ -93,7 +99,8 @@
         <h5>Archivo:</h5>
         <input type="file" accept="image/*" (change)="seleccionarArchivo($event)">
         <br><br>
-        <button type="submit" class="btn btn-primary">Subir receta</button>
+        <!-- <button type="submit" class="btn btn-primary">Subir receta</button> -->
+        <button type="submit" class="btn btn-primary" [disabled]="angForm.invalid">Subir receta</button>
       </form>
     </div>
   </div>
